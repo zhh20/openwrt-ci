@@ -1,4 +1,4 @@
-name: IPQ60XX-6.12-WIFI
+name: mt5962
 
 on:
   workflow_dispatch:
@@ -6,15 +6,15 @@ on:
     - cron: 0 0 1 * *
 
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: k6.12-nss
-  CONFIG_FILE: configs/RE-SS-01.config
-  DIY_SCRIPT: ress01.sh
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-25.12
+  CONFIG_FILE: configs/MT7621.config
+  DIY_SCRIPT: MT7621.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: IPQ60XX-6.12-WIFI
+  FIRMWARE_TAG: MT7621
   TZ: Asia/Shanghai
 
 jobs:
@@ -166,11 +166,10 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息(WIFI)
-          - 带WIFI带有线NSS的6.12内核固件
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 10.0.0.1
+          - 🌐 默认地址: 192.168.2.1
           - 🔑 默认密码: password
           ### 🧊 固件版本
           - 固件内核版本：${{ env.VERSION_KERNEL }}
